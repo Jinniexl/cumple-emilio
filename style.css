@@ -1,0 +1,650 @@
+/* =========================
+   ESTILOS GENERALES
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Quicksand", sans-serif;
+    background: #111936;
+    color: #EDEBFA;
+    overflow-x: hidden;
+}
+
+main {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+section {
+    min-height: 100vh;
+    padding: 60px 20px;
+
+    display: none;
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+}
+
+section.activa {
+    display: flex;
+    animation: entrarSeccion 0.9s ease both;
+}
+
+section.activa h2 {
+    animation: aparecer 0.8s ease 0.2s both;
+}
+
+section.activa p {
+    animation: aparecer 0.8s ease 0.4s both;
+}
+
+section.activa button {
+    animation: aparecer 0.8s ease 0.6s both;
+}
+
+h1 {
+    font-size: 3rem;
+    color: #E8E4FA;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.2rem;
+    color: #B9AEF2;
+    margin-bottom: 20px;
+}
+
+p {
+    max-width: 600px;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+#introduccion h2 {
+    animation: aparecerBrillando 1.2s ease 0.2s both;
+}
+
+@keyframes aparecerBrillando {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+        text-shadow: 0 0 0 transparent;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        text-shadow: 0 0 15px #8FA8E8;
+    }
+}
+
+#introduccion p {
+    animation: revelarTexto 1.3s ease 0.6s both;
+}
+
+@keyframes revelarTexto {
+    from {
+        opacity: 0;
+        filter: blur(5px);
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+}
+
+#introduccion button {
+    animation: aparecer 0.8s ease 1s both,
+               pulso 2.5s ease-in-out 2s infinite;
+}
+
+@keyframes pulso {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(124, 107, 196, 0);
+    }
+
+    50% {
+        transform: scale(1.04);
+        box-shadow: 0 0 18px rgba(124, 107, 196, 0.45);
+    }
+}
+
+/* =========================
+   REGALO Y/O CAJA
+========================= */
+.carta {
+    display: none;
+    position: relative;
+
+    width: 500px;
+    max-width: 90vw;
+
+    margin: 30px auto 0;
+
+    padding: 25px;
+
+    background: #E8E4FA;
+    color: #3F3A5A;
+    border-radius: 15px;
+
+    box-shadow:
+        0 0 20px rgba(232, 228, 250, 0.5),
+        0 0 40px rgba(124, 107, 196, 0.4);
+
+    scrollbar-width: none;
+}
+
+.carta::-webkit-scrollbar {
+    display: none;
+}
+.carta.mostrar {
+    display: block;
+    animation: cartaSalir 1.5s ease-out both;
+}
+
+@keyframes cartaSalir {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -30%) scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes cartaSalir {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+#continuarRegalo {
+    display: none;
+    margin: 30px auto 0;
+}
+
+#continuarRegalo.aparecer {
+    display: block;
+    animation: aparecer 0.8s ease both;
+}
+
+.regalo-container {
+    position: relative;
+    text-align: center;
+}
+
+.caja {
+    position: relative;
+    width: 180px;
+    height: 150px;
+    margin: 40px auto 20px;
+ animation:
+        flotarCaja 3s ease-in-out infinite,
+        brilloCaja 2.5s ease-in-out infinite;
+}
+
+@keyframes flotarCaja {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+.base {
+    position: absolute;
+    bottom: 0;
+    left: 10px;
+    width: 160px;
+    height: 100px;
+    background: linear-gradient(
+        135deg,
+        #5B4B9A,
+        #7C6BC4
+    );
+    border-radius: 0 0 8px 8px;
+
+    box-shadow:
+        0 0 15px rgba(124, 107, 196, 0.6),
+        0 0 35px rgba(124, 107, 196, 0.3);
+}
+
+.tapa {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    width: 180px;
+    height: 35px;
+    background: linear-gradient(
+        135deg,
+        #7C6BC4,
+        #9B8AE3
+    );
+    border-radius: 6px;
+    z-index: 2;
+
+    box-shadow:
+        0 0 15px rgba(155, 138, 227, 0.8),
+        0 0 30px rgba(124, 107, 196, 0.5);
+
+    transition: transform 0.8s ease;
+}
+
+.cinta-vertical {
+    position: absolute;
+    bottom: 0;
+    left: 75px;
+    width: 30px;
+    height: 100px;
+    background: #B9AEF2;
+    z-index: 1;
+}
+
+.cinta-horizontal {
+    position: absolute;
+    top: 85px;
+    left: 10px;
+    width: 160px;
+    height: 18px;
+    background: #B9AEF2;
+    z-index: 2;
+}
+
+@keyframes brilloCaja {
+    0%, 100% {
+        filter: brightness(1);
+    }
+
+    50% {
+        filter: brightness(1.15);
+    }
+}
+
+#abrirRegalo {
+    animation: pulsoBoton 2.5s ease-in-out infinite;
+}
+
+@keyframes pulsoBoton {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 18px rgba(124, 107, 196, 0.5);
+    }
+}
+
+.caja.abierta .tapa {
+    transform: translateY(-70px) rotate(-8deg);
+    transition: transform 0.8s ease;
+}
+
+.carta.mostrar {
+    display: block;
+    animation: cartaSalir 1s ease both;
+}
+
+@keyframes cartaSalir {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================
+   BOTONES
+========================= */
+
+button {
+    margin-top: 30px;
+    padding: 12px 28px;
+
+    border: none;
+    border-radius: 30px;
+
+    background: #7C6BC4;
+    color: white;
+
+    font-family: "Quicksand", sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+
+    transition: 
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(91, 75, 154, 0.25);
+}
+
+/* =========================
+   PORTADA
+========================= */
+
+#portada {
+    background: linear-gradient(
+        135deg,
+        #111936,
+        #211B46,
+        #33245E
+    );
+}
+
+#portada h1 {
+    animation: aparecer 1s ease;
+}
+
+#portada p {
+    animation: aparecer 1s ease 0.3s both;
+}
+
+#portada button {
+    animation: aparecer 1s ease 0.6s both;
+}
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes entrarSeccion {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#cancion h2 {
+    animation: aparecerBrillando 1.2s ease 0.2s both;
+}
+
+#final h2 {
+    animation: aparecerBrillando 1.2s ease 0.2s both;
+}
+
+/* REPRODUCTOR */
+.reproductor {
+    width: 380px;
+    max-width: 90vw;
+    margin-top: 30px;
+    padding: 25px;
+    background: linear-gradient(145deg, #211B46, #33245E);
+    border-radius: 25px;
+    box-shadow:
+        0 0 20px rgba(124, 107, 196, 0.4),
+        0 0 50px rgba(124, 107, 196, 0.2);
+    border: 1px solid rgba(232, 228, 250, 0.15);
+
+    animation: aparecerReproductor 1s ease 0.5s both;
+}
+
+/* PORTADA */
+.portada-cancion {
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+    border-radius: 18px;
+    overflow: hidden;
+
+    box-shadow:
+        0 0 20px rgba(155, 138, 227, 0.5);
+
+    animation: brilloPortada 3s ease-in-out infinite;
+}
+
+.portada-cancion img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* NOMBRE */
+.reproductor h3 {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #E8E4FA;
+}
+
+.artista {
+    margin-top: 5px;
+    color: #B9AEF2;
+    font-size: 0.95rem;
+}
+
+/* BARRA */
+.barra-musica {
+    width: 100%;
+    height: 5px;
+    margin-top: 25px;
+    background: rgba(232, 228, 250, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.barra-musica span {
+    display: block;
+    width: 40%;
+    height: 100%;
+    background: #E8E4FA;
+    border-radius: 10px;
+
+    animation: avanzarMusica 4s linear infinite;
+}
+
+/* BOTÓN SPOTIFY */
+.reproductor a {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 22px;
+
+    background: #7C6BC4;
+    color: white;
+    text-decoration: none;
+
+    border-radius: 25px;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reproductor a:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(124, 107, 196, 0.5);
+}
+
+/* ANIMACIONES */
+@keyframes aparecerReproductor {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes brilloPortada {
+    0%, 100% {
+        box-shadow: 0 0 15px rgba(155, 138, 227, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 30px rgba(155, 138, 227, 0.8);
+    }
+}
+
+@keyframes avanzarMusica {
+    from {
+        width: 10%;
+    }
+
+    to {
+        width: 85%;
+    }
+}
+
+/* =========================
+   ESTRELLAS FLOTANTES
+========================= */
+
+.estrellas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.estrellas span {
+    position: absolute;
+    color: #E8E4FA;
+    font-size: 18px;
+    opacity: 0.6;
+
+    animation: flotar 8s linear infinite;
+}
+
+.estrellas span:nth-child(even) {
+    animation-name: brillar;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes brillar {
+    0%, 100% {
+        opacity: 0.2;
+        transform: scale(0.8);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.2);
+    }
+}
+
+.estrellas span:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.estrellas span:nth-child(2) {
+    left: 25%;
+    animation-delay: 2s;
+}
+
+.estrellas span:nth-child(3) {
+    left: 40%;
+    animation-delay: 4s;
+}
+
+.estrellas span:nth-child(4) {
+    left: 55%;
+    animation-delay: 1s;
+}
+
+.estrellas span:nth-child(5) {
+    left: 70%;
+    animation-delay: 3s;
+}
+
+.estrellas span:nth-child(6) {
+    left: 80%;
+    animation-delay: 5s;
+}
+
+.estrellas span:nth-child(7) {
+    left: 90%;
+    animation-delay: 2.5s;
+}
+
+.estrellas span:nth-child(8) {
+    left: 15%;
+    animation-delay: 5.5s;
+}
+
+@keyframes flotar {
+    from {
+        transform: translateY(100vh) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(-10vh) rotate(180deg);
+    }
+}
+
+.confeti {
+    position: fixed;
+    top: -20px;
+    width: 8px;
+    height: 14px;
+    background: #E8E4FA;
+    z-index: 10;
+    pointer-events: none;
+
+    animation: caerConfeti 4s linear forwards;
+}
+
+@keyframes caerConfeti {
+
+    from {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    to {
+        transform: translateY(110vh) rotate(720deg);
+    }
+
+}
